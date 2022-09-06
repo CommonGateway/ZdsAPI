@@ -200,12 +200,12 @@ components:
           $ref: '#/components/schemas/Organisatiegegevens'
         referentienummer:
           type: integer
-          format: int32
         tijdstipBericht:
           type: string
           format: date
         entiteittype:
           type: string
+      description: ''
     Organisatiegegevens:
       title: Organisatiegegevens
       x-stoplight:
@@ -281,7 +281,8 @@ components:
         heeftAlsInitiator:
           $ref: '#/components/schemas/HeeftAlsInitiator'
         zgw:
-          $ref: '#/components/schemas/Zgw'
+          type: string
+          x-context: schema.conduction.nl/zaaktype
     ExtraElementen:
       title: ExtraElementen
       x-stoplight:
