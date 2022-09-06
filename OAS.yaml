@@ -281,8 +281,7 @@ components:
         heeftAlsInitiator:
           $ref: '#/components/schemas/HeeftAlsInitiator'
         zgw:
-          type: string
-          x-context: schema.conduction.nl/zaaktype
+          $ref: '#/components/schemas/Zgw'
     ExtraElementen:
       title: ExtraElementen
       x-stoplight:
@@ -304,7 +303,7 @@ components:
       properties:
         id:
           type: integer
-        omschrjiving:
+        omschrijving:
           type: string
         code:
           type: string
