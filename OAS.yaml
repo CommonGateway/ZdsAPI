@@ -1,591 +1,391 @@
-{
-  "openapi": "3.1.0",
-  "x-stoplight": {
-    "id": "x5742rzvgfa1f"
-  },
-  "info": {
-    "title": "Zds",
-    "version": "1.0"
-  },
-  "servers": [
-    {
-      "url": "http://localhost:3000"
-    }
-  ],
-  "paths": {
-    "/zds/{zdsId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "zdsId",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "get": {
-        "summary": "Get User Info by User ID",
-        "tags": [],
-        "responses": {
-          "200": {
-            "description": "User Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                },
-                "examples": {
-                  "Get User Alice Smith": {
-                    "value": {
-                      "id": 142,
-                      "firstName": "Alice",
-                      "lastName": "Smith",
-                      "email": "alice.smith@gmail.com",
-                      "dateOfBirth": "1997-10-31",
-                      "emailVerified": true,
-                      "signUpDate": "2019-08-24"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "User Not Found"
-          },
-          "": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Zds"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-zds-zdsId",
-        "description": "Retrieve the information of the user with the matching user ID."
-      },
-      "patch": {
-        "summary": "Update User Information",
-        "operationId": "patch-zds-zdsId",
-        "responses": {
-          "200": {
-            "description": "User Updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Zds"
-                },
-                "examples": {
-                  "Updated User Rebecca Baker": {
-                    "value": {
-                      "id": 13,
-                      "firstName": "Rebecca",
-                      "lastName": "Baker",
-                      "email": "rebecca@gmail.com",
-                      "dateOfBirth": "1985-10-02",
-                      "emailVerified": false,
-                      "createDate": "2019-08-24"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "User Not Found"
-          },
-          "409": {
-            "description": "Email Already Taken"
-          }
-        },
-        "description": "Update the information of an existing user.",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Zds"
-              },
-              "examples": {
-                "Update First Name": {
-                  "value": {
-                    "firstName": "Rebecca"
-                  }
-                },
-                "Update Email": {
-                  "value": {
-                    "email": "rebecca@gmail.com"
-                  }
-                },
-                "Update Last Name & Date of Birth": {
-                  "value": {
-                    "lastName": "Baker",
-                    "dateOfBirth": "1985-10-02"
-                  }
-                }
-              }
-            }
-          },
-          "description": "Patch user properties to update."
-        }
-      },
-      "put": {
-        "summary": "",
-        "operationId": "put-zds-zdsId",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Zds"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Zds"
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "summary": "",
-        "operationId": "delete-zds-zdsId",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/zds": {
-      "post": {
-        "summary": "Create New User",
-        "operationId": "post-user",
-        "responses": {
-          "200": {
-            "description": "User Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Zds"
-                },
-                "examples": {
-                  "New User Bob Fellow": {
-                    "value": {
-                      "id": 12,
-                      "firstName": "Bob",
-                      "lastName": "Fellow",
-                      "email": "bob.fellow@gmail.com",
-                      "dateOfBirth": "1996-08-24",
-                      "emailVerified": false,
-                      "createDate": "2020-11-18"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Missing Required Information"
-          },
-          "409": {
-            "description": "Email Already Taken"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Zds"
-              },
-              "examples": {
-                "Create User Bob Fellow": {
-                  "value": {
-                    "firstName": "Bob",
-                    "lastName": "Fellow",
-                    "email": "bob.fellow@gmail.com",
-                    "dateOfBirth": "1996-08-24"
-                  }
-                }
-              }
-            }
-          },
-          "description": "Post the necessary fields for the API to create a new user."
-        },
-        "description": "Create a new zds."
-      },
-      "get": {
-        "summary": "",
-        "operationId": "get-user",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Zds"
-                }
-              }
-            }
-          }
-        },
-        "description": ""
-      },
-      "parameters": []
-    }
-  },
-  "components": {
-    "schemas": {
-      "Zds": {
-        "title": "zakLk01",
-        "type": "object",
-        "description": "",
-        "examples": [
-          {
-            "id": 142,
-            "firstName": "Alice",
-            "lastName": "Smith",
-            "email": "alice.smith@gmail.com",
-            "dateOfBirth": "1997-10-31",
-            "emailVerified": true,
-            "signUpDate": "2019-08-24"
-          }
-        ],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "Unique identifier for the given user."
-          },
-          "stuurgegevens": {
-            "$ref": "#/components/schemas/Stuurgegevens"
-          },
-          "parameters": {
-            "$ref": "#/components/schemas/Parameters"
-          },
-          "object": {
-            "$ref": "#/components/schemas/Object"
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "Stuurgegevens": {
-        "title": "Stuurgegevens",
-        "x-stoplight": {
-          "id": "eo40sc1u4tkx6"
-        },
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "berichtcode": {
-            "type": "string"
-          },
-          "zender": {
-            "$ref": "#/components/schemas/Organisatiegegevens"
-          },
-          "ontvanger": {
-            "$ref": "#/components/schemas/Organisatiegegevens"
-          },
-          "referentienummer": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "tijdstipBericht": {
-            "type": "string",
-            "format": "date"
-          },
-          "entiteittype": {
-            "type": "string"
-          }
-        }
-      },
-      "Organisatiegegevens": {
-        "title": "Organisatiegegevens",
-        "x-stoplight": {
-          "id": "v26eziynzwqsw"
-        },
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "organisatie": {
-            "type": "string"
-          },
-          "applicatie": {
-            "type": "string"
-          },
-          "administratie": {
-            "type": "string"
-          },
-          "gebruiker": {
-            "type": "string"
-          }
-        }
-      },
-      "Parameters": {
-        "title": "Parameters",
-        "x-stoplight": {
-          "id": "m10lyhmwvv5em"
-        },
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "mutatiesoort": {
-            "type": "string"
-          },
-          "indicatorOvername": {
-            "type": "string"
-          }
-        }
-      },
-      "Object": {
-        "title": "Object",
-        "x-stoplight": {
-          "id": "cjxa7c291i008"
-        },
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "identificatie": {
-            "type": "integer"
-          },
-          "omschrijving": {
-            "type": "string"
-          },
-          "toelichting": {
-            "type": "string"
-          },
-          "startdatum": {
-            "type": "string",
-            "format": "date"
-          },
-          "registratiedatum": {
-            "type": "string",
-            "format": "date"
-          },
-          "publicatiedatum": {
-            "type": "string",
-            "format": "date"
-          },
-          "einddatumGepland": {
-            "type": "string",
-            "format": "date"
-          },
-          "uiterlijkeEinddatum": {
-            "type": "string",
-            "format": "date"
-          },
-          "betalingsIndicatie": {
-            "type": "string"
-          },
-          "laatsteBetaaldatum": {
-            "type": "string",
-            "format": "date"
-          },
-          "zaakniveau": {
-            "type": "integer"
-          },
-          "deelzakenIndicatie": {
-            "type": "string"
-          },
-          "extraElementen": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExtraElementen"
-            }
-          },
-          "isVan": {
-            "$ref": "#/components/schemas/IsVan"
-          },
-          "heeftAlsInitiator": {
-            "$ref": "#/components/schemas/HeeftAlsInitiator"
-          },
-          "zgw": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "integer"
-              }
-            }
-          }
-        }
-      },
-      "ExtraElementen": {
-        "title": "ExtraElementen",
-        "x-stoplight": {
-          "id": "9pr830hozxgxx"
-        },
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "name": {
-            "type": "string"
-          },
-          "value": {
-            "type": "string"
-          }
-        }
-      },
-      "IsVan": {
-        "title": "IsVan",
-        "x-stoplight": {
-          "id": "it0a6vb7epvpg"
-        },
-        "type": "object",
-        "description": "",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "omschrjiving": {
-            "type": "string"
-          },
-          "code": {
-            "type": "string"
-          }
-        }
-      },
-      "HeeftAlsInitiator": {
-        "title": "HeeftAlsInitiator",
-        "x-stoplight": {
-          "id": "1fz15t9oq1k45"
-        },
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "vestiging": {
-            "$ref": "#/components/schemas/Vestiging"
-          },
-          "natuurlijkPersoon": {
-            "$ref": "#/components/schemas/NatuurlijkPersoon"
-          }
-        }
-      },
-      "Vestiging": {
-        "title": "Vestiging",
-        "x-stoplight": {
-          "id": "3xn6n0a6is0df"
-        },
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "vestigingsNummer": {
-            "type": "integer"
-          },
-          "authentiek": {
-            "type": "string"
-          },
-          "handelsnaam": {
-            "type": "string"
-          },
-          "verblijfsadres": {
-            "$ref": "#/components/schemas/Verblijfadres"
-          }
-        }
-      },
-      "NatuurlijkPersoon": {
-        "title": "NatuurlijkPersoon",
-        "x-stoplight": {
-          "id": "frm6woi598cln"
-        },
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "inpBsn": {
-            "type": "integer"
-          },
-          "authentiek": {
-            "type": "string"
-          },
-          "geslachtsnaam": {
-            "type": "string"
-          },
-          "voorvoegselGeslachtsnaam": {
-            "type": "string"
-          },
-          "voorletters": {
-            "type": "string"
-          },
-          "voornamen": {
-            "type": "string"
-          },
-          "geslachtsaanduiding": {
-            "type": "string"
-          },
-          "geboortedatum": {
-            "type": "string"
-          },
-          "verblijfadres": {
-            "$ref": "#/components/schemas/Verblijfadres"
-          }
-        }
-      },
-      "Verblijfadres": {
-        "title": "Verblijfadres",
-        "x-stoplight": {
-          "id": "a51rsbjy2nn0j"
-        },
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "aoaIdentificatie": {
-            "type": "string"
-          },
-          "authentiek": {
-            "type": "string"
-          },
-          "wplWoonplaatsNaam": {
-            "type": "string"
-          },
-          "gorOpenbareRuimteNaam": {
-            "type": "string"
-          },
-          "aoaPostcode": {
-            "type": "string"
-          },
-          "aoaHuisnummer": {
-            "type": "string"
-          },
-          "aoaHuisletter": {
-            "type": "string"
-          },
-          "aoaHuisnummertoevoeging": {
-            "type": "string"
-          },
-          "inpLocatiebeschrijving": {
-            "type": "string"
-          }
-        }
-      }
-    }
-  }
-}
+openapi: 3.1.0
+x-stoplight:
+  id: x5742rzvgfa1f
+info:
+  title: Zds
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  '/zds/{zdsId}':
+    parameters:
+      - schema:
+          type: string
+        name: zdsId
+        in: path
+        required: true
+    get:
+      summary: Get User Info by User ID
+      tags: []
+      responses:
+        '200':
+          description: User Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Get User Alice Smith:
+                  value:
+                    id: 142
+                    firstName: Alice
+                    lastName: Smith
+                    email: alice.smith@gmail.com
+                    dateOfBirth: '1997-10-31'
+                    emailVerified: true
+                    signUpDate: '2019-08-24'
+        '404':
+          description: User Not Found
+        '':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Zds'
+      operationId: get-zds-zdsId
+      description: Retrieve the information of the user with the matching user ID.
+    patch:
+      summary: Update User Information
+      operationId: patch-zds-zdsId
+      responses:
+        '200':
+          description: User Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Zds'
+              examples:
+                Updated User Rebecca Baker:
+                  value:
+                    id: 13
+                    firstName: Rebecca
+                    lastName: Baker
+                    email: rebecca@gmail.com
+                    dateOfBirth: '1985-10-02'
+                    emailVerified: false
+                    createDate: '2019-08-24'
+        '404':
+          description: User Not Found
+        '409':
+          description: Email Already Taken
+      description: Update the information of an existing user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Zds'
+            examples:
+              Update First Name:
+                value:
+                  firstName: Rebecca
+              Update Email:
+                value:
+                  email: rebecca@gmail.com
+              Update Last Name & Date of Birth:
+                value:
+                  lastName: Baker
+                  dateOfBirth: '1985-10-02'
+        description: Patch user properties to update.
+    put:
+      summary: ''
+      operationId: put-zds-zdsId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Zds'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Zds'
+    delete:
+      summary: ''
+      operationId: delete-zds-zdsId
+      responses:
+        '200':
+          description: OK
+  /zds:
+    post:
+      summary: Create New User
+      operationId: post-user
+      responses:
+        '200':
+          description: User Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Zds'
+              examples:
+                New User Bob Fellow:
+                  value:
+                    id: 12
+                    firstName: Bob
+                    lastName: Fellow
+                    email: bob.fellow@gmail.com
+                    dateOfBirth: '1996-08-24'
+                    emailVerified: false
+                    createDate: '2020-11-18'
+        '400':
+          description: Missing Required Information
+        '409':
+          description: Email Already Taken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Zds'
+            examples:
+              Create User Bob Fellow:
+                value:
+                  firstName: Bob
+                  lastName: Fellow
+                  email: bob.fellow@gmail.com
+                  dateOfBirth: '1996-08-24'
+        description: Post the necessary fields for the API to create a new user.
+      description: Create a new zds.
+    get:
+      summary: ''
+      operationId: get-user
+      responses:
+        '200':
+          description: OK
+        '':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Zds'
+      description: ''
+    parameters: []
+components:
+  schemas:
+    Zds:
+      title: zakLk01
+      type: object
+      description: ''
+      examples:
+        - id: 142
+          firstName: Alice
+          lastName: Smith
+          email: alice.smith@gmail.com
+          dateOfBirth: '1997-10-31'
+          emailVerified: true
+          signUpDate: '2019-08-24'
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the given user.
+        stuurgegevens:
+          $ref: '#/components/schemas/Stuurgegevens'
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        object:
+          $ref: '#/components/schemas/Object'
+      required:
+        - id
+    Stuurgegevens:
+      title: Stuurgegevens
+      x-stoplight:
+        id: eo40sc1u4tkx6
+      type: object
+      properties:
+        id:
+          type: integer
+        berichtcode:
+          type: string
+        zender:
+          $ref: '#/components/schemas/Organisatiegegevens'
+        ontvanger:
+          $ref: '#/components/schemas/Organisatiegegevens'
+        referentienummer:
+          type: integer
+        tijdstipBericht:
+          type: string
+          format: date
+        entiteittype:
+          type: string
+    Organisatiegegevens:
+      title: Organisatiegegevens
+      x-stoplight:
+        id: v26eziynzwqsw
+      type: object
+      properties:
+        id:
+          type: integer
+        organisatie:
+          type: string
+        applicatie:
+          type: string
+        administratie:
+          type: string
+        gebruiker:
+          type: string
+    Parameters:
+      title: Parameters
+      x-stoplight:
+        id: m10lyhmwvv5em
+      type: object
+      properties:
+        id:
+          type: integer
+        mutatiesoort:
+          type: string
+        indicatorOvername:
+          type: string
+    Object:
+      title: Object
+      x-stoplight:
+        id: cjxa7c291i008
+      type: object
+      properties:
+        id:
+          type: string
+        identificatie:
+          type: integer
+        omschrijving:
+          type: string
+        toelichting:
+          type: string
+        startdatum:
+          type: string
+          format: date
+        registratiedatum:
+          type: string
+          format: date
+        publicatiedatum:
+          type: string
+          format: date
+        einddatumGepland:
+          type: string
+          format: date
+        uiterlijkeEinddatum:
+          type: string
+          format: date
+        betalingsIndicatie:
+          type: string
+        laatsteBetaaldatum:
+          type: string
+          format: date
+        zaakniveau:
+          type: integer
+        deelzakenIndicatie:
+          type: string
+        extraElementen:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExtraElementen'
+        isVan:
+          $ref: '#/components/schemas/IsVan'
+        heeftAlsInitiator:
+          $ref: '#/components/schemas/HeeftAlsInitiator'
+        zgw:
+          type: object
+          properties:
+            id:
+              type: integer
+    ExtraElementen:
+      title: ExtraElementen
+      x-stoplight:
+        id: 9pr830hozxgxx
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        value:
+          type: string
+    IsVan:
+      title: IsVan
+      x-stoplight:
+        id: it0a6vb7epvpg
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+        omschrjiving:
+          type: string
+        code:
+          type: string
+    HeeftAlsInitiator:
+      title: HeeftAlsInitiator
+      x-stoplight:
+        id: 1fz15t9oq1k45
+      type: object
+      properties:
+        id:
+          type: integer
+        vestiging:
+          $ref: '#/components/schemas/Vestiging'
+        natuurlijkPersoon:
+          $ref: '#/components/schemas/NatuurlijkPersoon'
+    Vestiging:
+      title: Vestiging
+      x-stoplight:
+        id: 3xn6n0a6is0df
+      type: object
+      properties:
+        id:
+          type: integer
+        vestigingsNummer:
+          type: integer
+        authentiek:
+          type: string
+        handelsnaam:
+          type: string
+        verblijfsadres:
+          $ref: '#/components/schemas/Verblijfadres'
+    NatuurlijkPersoon:
+      title: NatuurlijkPersoon
+      x-stoplight:
+        id: frm6woi598cln
+      type: object
+      properties:
+        id:
+          type: integer
+        inpBsn:
+          type: integer
+        authentiek:
+          type: string
+        geslachtsnaam:
+          type: string
+        voorvoegselGeslachtsnaam:
+          type: string
+        voorletters:
+          type: string
+        voornamen:
+          type: string
+        geslachtsaanduiding:
+          type: string
+        geboortedatum:
+          type: string
+        verblijfadres:
+          $ref: '#/components/schemas/Verblijfadres'
+    Verblijfadres:
+      title: Verblijfadres
+      x-stoplight:
+        id: a51rsbjy2nn0j
+      type: object
+      properties:
+        id:
+          type: integer
+        aoaIdentificatie:
+          type: string
+        authentiek:
+          type: string
+        wplWoonplaatsNaam:
+          type: string
+        gorOpenbareRuimteNaam:
+          type: string
+        aoaPostcode:
+          type: string
+        aoaHuisnummer:
+          type: string
+        aoaHuisletter:
+          type: string
+        aoaHuisnummertoevoeging:
+          type: string
+        inpLocatiebeschrijving:
+          type: string
