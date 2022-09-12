@@ -189,6 +189,7 @@ components:
       x-stoplight:
         id: eo40sc1u4tkx6
       type: object
+      description: ''
       properties:
         id:
           type: integer
@@ -199,13 +200,12 @@ components:
         ontvanger:
           $ref: '#/components/schemas/Organisatiegegevens'
         referentienummer:
-          type: integer
+          type: string
         tijdstipBericht:
           type: string
           format: date
         entiteittype:
           type: string
-      description: ''
     Organisatiegegevens:
       title: Organisatiegegevens
       x-stoplight:
