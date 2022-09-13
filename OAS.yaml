@@ -311,9 +311,9 @@ components:
       properties:
         id:
           type: integer
-        name:
+        '@naam':
           type: string
-        value:
+        '#':
           type: string
     IsVan:
       title: IsVan
