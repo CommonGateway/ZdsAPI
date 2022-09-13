@@ -246,12 +246,17 @@ components:
           type: integer
         omschrijving:
           type: string
+        dct.omschrijving:
+          type: string
         toelichting:
           type: string
-        startdatum:
+        creatiedatum:
           type: string
           format: date
         registratiedatum:
+          type: string
+          format: date
+        startdatum:
           type: string
           format: date
         publicatiedatum:
@@ -282,6 +287,22 @@ components:
           $ref: '#/components/schemas/HeeftAlsInitiator'
         zgw:
           $ref: '#/components/schemas/Zgw'
+        titel:
+          type: string
+        beschrijving:
+          type: string
+        formaat:
+          type: string
+        taal:
+          type: string
+        status:
+          type: string
+        auteur:
+          type: string
+        inhoud:
+          type: string
+        isRelevantVoor:
+          $ref: '#/components/schemas/IsRelevantVoor'
     ExtraElementen:
       title: ExtraElementen
       x-stoplight:
@@ -401,3 +422,13 @@ components:
         identificatie:
           type: string
       description: ''
+    IsRelevantVoor:
+      title: IsRelevantVoor
+      x-stoplight:
+        id: 639ax8z8e8zym
+      type: object
+      properties:
+        id:
+          type: string
+        identificatie:
+          type: string
