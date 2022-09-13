@@ -246,7 +246,7 @@ components:
           type: integer
         omschrijving:
           type: string
-        dct.omschrijving:
+        dctOmschrijving:
           type: string
         toelichting:
           type: string
