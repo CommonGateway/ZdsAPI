@@ -365,7 +365,7 @@ components:
         id:
           type: integer
         inpBsn:
-          type: integer
+          type: string
         authentiek:
           type: string
         geslachtsnaam:
@@ -382,6 +382,7 @@ components:
           type: string
         verblijfadres:
           $ref: '#/components/schemas/Verblijfadres'
+      description: ''
     Verblijfadres:
       title: Verblijfadres
       x-stoplight:
