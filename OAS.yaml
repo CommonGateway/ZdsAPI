@@ -184,9 +184,8 @@ components:
           $ref: '#/components/schemas/Object'
         zgwZaak:
           context: schema.conduction.nl/zaak
-          type: string
         zgwDocument:
-          type: string
+          context: schema.conduction.nl/document
       required:
         - id
     Stuurgegevens:
