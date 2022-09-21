@@ -355,7 +355,7 @@ components:
         id:
           type: integer
         vestigingsNummer:
-          type: integer
+          type: string
         authentiek:
           type: string
         handelsnaam:
