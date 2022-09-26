@@ -249,7 +249,7 @@ components:
         id:
           type: string
         identificatie:
-          type: integer
+          type: string
         omschrijving:
           type: string
         dctOmschrijving:
