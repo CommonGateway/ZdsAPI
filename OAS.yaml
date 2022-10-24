@@ -309,6 +309,14 @@ components:
           type: string
         isRelevantVoor:
           $ref: '#/components/schemas/IsRelevantVoor'
+        heeft:
+          type: array
+          items:
+            $ref: '#/components/schemas/Status'
+        heeftRelevant:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
     ExtraElementen:
       title: ExtraElementen
       x-stoplight:
@@ -438,4 +446,54 @@ components:
         id:
           type: string
         identificatie:
+          type: string
+    Status:
+      title: Status
+      x-stoplight:
+        id: opmeh1kvlppzf
+      type: object
+      properties:
+        id:
+          type: string
+        omschrijving:
+          type: string
+        omschrijvingGeneriek:
+          type: string
+        datumStatusGezet:
+          type: string
+        toelichting:
+          type: string
+        '':
+          type: string
+    Document:
+      title: Document
+      x-stoplight:
+        id: yynz0vg2h43px
+      type: object
+      properties:
+        id:
+          type: string
+        identificatie:
+          type: string
+        omschrijving:
+          type: string
+        omschrijvingGeneriek:
+          type: string
+        creatiedatum:
+          type: string
+        ontvangsdatum:
+          type: string
+        titel:
+          type: string
+        formaat:
+          type: string
+        taal:
+          type: string
+        status:
+          type: string
+        vertrouwelijkAanduiding:
+          type: string
+        auteur:
+          type: string
+        '':
           type: string
