@@ -495,5 +495,5 @@ components:
           type: string
         auteur:
           type: string
-        linnk:
+        link:
           type: string
